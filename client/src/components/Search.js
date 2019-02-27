@@ -50,7 +50,12 @@ const Search = () => {
           OK
         </button>
         {links.map((link, index) => (
-          <Link key={link.id} link={link} index={index} />
+          <Link
+            key={link.id}
+            link={link}
+            index={index}
+            showUpvote={false}
+          />
         ))}
       </div>
     </div>

@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 
 import { useMutation } from "../hooks/useMutation";
 import { FEED_QUERY } from "./LinkList";
+import { LINKS_PER_PAGE } from "../constants";
 
 const POST_MUTATION = gql`
   mutation PostMutation($description: String!, $url: String!) {
@@ -24,7 +25,8 @@ const CreateLink = ({ history }) => {
     onCompleted: () => history.push("/"),
     refetchQueries: [
       {
-        query: FEED_QUERY
+        query: FEED_QUERY,
+        variables: { first: LINKS_PER_PAGE, skip: 0, orderBy: "createdAt_DESC" }
       }
     ]
   });

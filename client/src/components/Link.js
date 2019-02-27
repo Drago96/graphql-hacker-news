@@ -26,7 +26,7 @@ const VOTE_MUTATION = gql`
   }
 `;
 
-const Link = ({ link, index, updateStoreAfterVote }) => {
+const Link = ({ link, index, updateStoreAfterVote, showUpvote }) => {
   const authToken = localStorage.getItem(AUTH_TOKEN);
 
   const voteMutation = useMutation(VOTE_MUTATION, {
@@ -39,7 +39,7 @@ const Link = ({ link, index, updateStoreAfterVote }) => {
     <div className="flex mt2 items-start">
       <div className="flex items-center">
         <span className="gray">{index + 1}.</span>
-        {authToken && (
+        {authToken && showUpvote && (
           <div className="ml1 gray f11" onClick={voteMutation}>
             ▲
           </div>
@@ -62,7 +62,12 @@ const Link = ({ link, index, updateStoreAfterVote }) => {
 Link.propTypes = {
   link: ILink,
   index: PropTypes.number.isRequired,
-  updateStoreAfterVote: PropTypes.func.isRequired
+  updateStoreAfterVote: PropTypes.func,
+  showUpvote: PropTypes.bool
+};
+
+Link.defaultProps = {
+  showUpvote: true
 };
 
 export default Link;
