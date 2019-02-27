@@ -5,6 +5,7 @@ import LinkList from "./LinkList";
 import CreateLink from "./CreateLink";
 import Header from "./Header";
 import Authentication from "./Authentication";
+import Search from "./Search";
 import { AUTH_TOKEN } from "../constants";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={LinkList} />
           {authToken && <Route exact path="/create" component={CreateLink} />}
+          <Route exact path="/search" component={Search} />
           {!authToken && (
             <Route exact path="/authentication" component={Authentication} />
           )}

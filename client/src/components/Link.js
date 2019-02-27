@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
-import { useMutation } from "react-apollo-hooks";
 
 import ILink from "../interfaces/Link";
 import { AUTH_TOKEN } from "../constants";
 import { timeDifferenceForDate } from "../utils";
+import { useMutation } from "../hooks/useMutation";
 
 const VOTE_MUTATION = gql`
   mutation VoteMutation($linkId: ID!) {
